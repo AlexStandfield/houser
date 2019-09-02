@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
-import store from '../store'
-import StepOne from './StepOne'
-import StepTwo from './StepTwo'
+import store from '../../store'
 
 export default class extends Component {
     constructor(){
@@ -13,7 +11,7 @@ export default class extends Component {
             name: reduxState.name,
             address: reduxState.address,
             city: reduxState.city,
-            state: reduxState.state,
+            States: reduxState.States,
             zip: reduxState.zip,
             img: reduxState.img,
             mortgage: reduxState.mortgage,
@@ -28,7 +26,7 @@ export default class extends Component {
                 name: reduxState.name,
                 address: reduxState.address,
                 city: reduxState.city,
-                state: reduxState.state,
+                States: reduxState.States,
                 zip: reduxState.zip,
                 img: reduxState.img,
                 mortgage: reduxState.mortgage,
@@ -38,13 +36,13 @@ export default class extends Component {
     }
 
     addHouse = () => {
-        const {name, address, city, state, zip} = this.reduxState
+        const {name, address, city, States, zip} = this.reduxState
         const {img, mortgage, rent} = this.state
         const body = {
             name,
             address,
             city,
-            state,
+            States,
             zip,
             img,
             mortgage,
@@ -55,7 +53,7 @@ export default class extends Component {
                 name: '',
                 address: '',
                 city: '',
-                state: '',
+                States: '',
                 zip: 0,
                 img: '',
                 mortgage: 0,

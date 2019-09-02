@@ -18,7 +18,7 @@ export default class House extends Component {
                 {this.props.name}
                 {this.props.address}
                 {this.props.city}
-                {this.props.state}
+                {this.props.States}
                 {this.props.zip}
                 {this.props.img}
                 {this.props.mortgage}

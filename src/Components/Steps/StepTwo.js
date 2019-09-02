@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
-import store from '../store'
-import {STEP_TWO} from '../reducer'
+import store from '../../store'
+import {STEP_TWO} from '../../reducer'
 
 export default class StepTwo extends Component {
     constructor(){
@@ -11,7 +11,7 @@ export default class StepTwo extends Component {
             name: reduxState.name,
             address: reduxState.address,
             city: reduxState.city,
-            state: reduxState.state,
+            States: reduxState.States,
             zip: reduxState.zip,
             img: reduxState.img,
             mortgage: reduxState.mortgage,
@@ -26,7 +26,7 @@ export default class StepTwo extends Component {
                 name: reduxState.name,
                 address: reduxState.address,
                 city: reduxState.city,
-                state: reduxState.state,
+                States: reduxState.States,
                 zip: reduxState.zip,
                 img: reduxState.img,
                 mortgage: reduxState.mortgage,

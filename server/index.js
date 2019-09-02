@@ -6,8 +6,6 @@ const cors = require('cors')
 // Controllers
 const ctrl = require('./controller')
 
-// MiddleWare
-
 // env Variables
 const {
     CONNECTION_STRING

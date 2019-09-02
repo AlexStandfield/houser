@@ -33,7 +33,7 @@ export default class Dashboard extends Component {
     render() {
         const mappedHouses = this.state.houses.map((houses, i) => {
             return (
-                <House key={i} id={houses.id} name={houses.name} address={houses.address} city={houses.city} state={houses.state} zip={houses.zip} getHouses={this.getHouses} />
+                <House key={i} id={houses.id} name={houses.name} address={houses.address} city={houses.city} States={houses.States} zip={houses.zip} getHouses={this.getHouses} />
             )
         })
 

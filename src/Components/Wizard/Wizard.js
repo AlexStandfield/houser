@@ -19,7 +19,6 @@ export default class Wizard extends Component {
     render() {
         return (
             <div>
-                Wizard
                 <Link to='/'>
                     <button onClick={() => this.cancel()} >Cancel</button>
                 </Link>

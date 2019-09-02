@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
-import store from '../store'
-import {STEP_ONE} from '../reducer'
+import store from '../../store'
+import {STEP_ONE} from '../../reducer'
 
 export default class StepOne extends Component {
     constructor(){
@@ -11,7 +11,7 @@ export default class StepOne extends Component {
             name: reduxState.name,
             address: reduxState.address,
             city: reduxState.city,
-            state: reduxState.state,
+            States: reduxState.States,
             zip: reduxState.zip,
             img: reduxState.img,
             mortgage: reduxState.mortgage,
@@ -26,7 +26,7 @@ export default class StepOne extends Component {
                 name: reduxState.name,
                 address: reduxState.address,
                 city: reduxState.city,
-                state: reduxState.state,
+                States: reduxState.States,
                 zip: reduxState.zip,
                 img: reduxState.img,
                 mortgage: reduxState.mortgage,
@@ -50,9 +50,9 @@ export default class StepOne extends Component {
             city: cityVal
         })
     }
-    handleStateChange(stateVal){
+    handleStatesChange(StatesVal){
         this.setState({
-            state: stateVal
+            States: StatesVal
         })
     }
     handleZipChange(zipVal){
@@ -89,7 +89,7 @@ export default class StepOne extends Component {
                 <input type='text' value={this.state.city} onChange={e => this.handleCityChange(e.target.value)}>
 
                 </input>
-                <input type='text' value={this.state.state} onChange={e => this.handleStateChange(e.target.value)}>
+                <input type='text' value={this.state.States} onChange={e => this.handleStatesChange(e.target.value)}>
 
                 </input>
                 <input type='text' value={this.state.zip} onChange={e => this.handleZipChange(e.target.value)}>
