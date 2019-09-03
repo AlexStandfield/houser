@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import {Route} from 'react-router-dom'
-import StepOne from '../../Steps/StepOne'
-import StepTwo from '../../Steps/StepTwo'
-import StepThree from '../../Steps/StepThree'
+import StepOne from '../Steps/StepOne'
+import StepTwo from '../Steps/StepTwo'
+import StepThree from '../Steps/StepThree'
 import store from '../../store'
 import {CLEAR} from '../../reducer'
 

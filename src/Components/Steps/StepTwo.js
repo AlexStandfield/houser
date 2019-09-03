@@ -6,60 +6,46 @@ import {STEP_TWO} from '../../reducer'
 export default class StepTwo extends Component {
     constructor(){
         super()
-        const reduxState = store.getState()
         this.state = {
-            name: reduxState.name,
-            address: reduxState.address,
-            city: reduxState.city,
-            States: reduxState.States,
-            zip: reduxState.zip,
-            img: reduxState.img,
-            mortgage: reduxState.mortgage,
-            rent: reduxState.rent
+            reduxState: store.getState(),
+            img: ''
         }
     }
 
     componentDidMount(){
         store.subscribe(() => {
-            const reduxState = store.getState()
             this.setState({
-                name: reduxState.name,
-                address: reduxState.address,
-                city: reduxState.city,
-                States: reduxState.States,
-                zip: reduxState.zip,
-                img: reduxState.img,
-                mortgage: reduxState.mortgage,
-                rent: reduxState.rent
+                reduxState: store.getState(),
+                img: this.state.reduxState.img
             })
         })
     }
 
-    handleImgChange = (imgVal) => {
-        this.setState({
-            img: imgVal
-        })
-    }
+    // handleImgChange = (imgVal) => {
+    //     this.setState({
+    //         img: imgVal
+    //     })
+    // }
 
-    nextStep = (val) => {
-        let action = {
-            type: STEP_TWO,
-            payload: val
-        }
-        store.dispatch(action)
+    nextStep = () => {
+        const {
+            img
+        } = this.state
+        store.dispatch({type: STEP_TWO, payload: {img}})
+        console.log(store.getState())
     }
 
     render() {
         return (
             <div>
-                <input type='text' src={this.state.img} onChange={e => this.handleImgChange(e.target.value)} />
+                <input type='text' src={this.state.img} onChange={(e) => this.setState({img: e.target.value})} />
 
                 <Link to='/wizard/step1' className="links">
                     <button>Previos</button>
                 </Link>
 
                 <Link to='/wizard/step3' className="links">
-                    <button onClick={() => this.nextStep()} >Next</button>
+                    <button onClick={this.nextStep} >Next</button>
                 </Link>
             </div>
         )

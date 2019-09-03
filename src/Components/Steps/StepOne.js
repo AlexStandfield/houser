@@ -6,31 +6,26 @@ import {STEP_ONE} from '../../reducer'
 export default class StepOne extends Component {
     constructor(){
         super()
-        const reduxState = store.getState()
+
         this.state = {
-            name: reduxState.name,
-            address: reduxState.address,
-            city: reduxState.city,
-            States: reduxState.States,
-            zip: reduxState.zip,
-            img: reduxState.img,
-            mortgage: reduxState.mortgage,
-            rent: reduxState.rent
+            reduxState: store.getState(),
+            name: '',
+            address: '',
+            city: '',
+            States: '',
+            zip: 0
         }
     }
 
     componentDidMount(){
         store.subscribe(() => {
-            const reduxState = store.getState()
             this.setState({
-                name: reduxState.name,
-                address: reduxState.address,
-                city: reduxState.city,
-                States: reduxState.States,
-                zip: reduxState.zip,
-                img: reduxState.img,
-                mortgage: reduxState.mortgage,
-                rent: reduxState.rent
+                reduxState: store.getState(),
+                name: this.state.reduxState.name,
+                address: this.state.reduxState.address,
+                city: this.state.reduxState.city,
+                States: this.state.reduxState.States,
+                zip: this.state.reduxState.zip
             })
         })
     }
@@ -61,21 +56,17 @@ export default class StepOne extends Component {
         })
     }
 
-    nextStep = (val) => {
-        let action = {
-            type: STEP_ONE,
-            payload: val
-        }
-        store.dispatch(action)
+    nextStep = () => {
+        const {
+            name,
+            address,
+            city,
+            States,
+            zip
+        } = this.state
+        store.dispatch({type: STEP_ONE, payload: {name, address, city, States, zip}})
+        console.log(store.getState())
     }
-
-    // nextStep(){
-    //     const reduxState = store.getState()
-    //     store.dispatch({
-    //         type: STEP_ONE,
-    //         payload
-    //     })
-    // }
 
     render() {
         return (

@@ -2,41 +2,30 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
 import store from '../../store'
+import {ADD_HOUSE} from '../../reducer'
 
 export default class extends Component {
     constructor(){
         super()
-        const reduxState = store.getState()
         this.state = {
-            name: reduxState.name,
-            address: reduxState.address,
-            city: reduxState.city,
-            States: reduxState.States,
-            zip: reduxState.zip,
-            img: reduxState.img,
-            mortgage: reduxState.mortgage,
-            rent: reduxState.rent
+            reduxState: store.getState(),
+            mortgage: 0,
+            rent: 0
         }
     }
 
     componentDidMount(){
         store.subscribe(() => {
-            const reduxState = store.getState()
             this.setState({
-                name: reduxState.name,
-                address: reduxState.address,
-                city: reduxState.city,
-                States: reduxState.States,
-                zip: reduxState.zip,
-                img: reduxState.img,
-                mortgage: reduxState.mortgage,
-                rent: reduxState.rent
+                reduxState: store.getState(),
+                mortgage: this.state.reduxState.mortgage,
+                rent: this.state.reduxState.rent
             })
         })
     }
 
     addHouse = () => {
-        const {name, address, city, States, zip} = this.reduxState
+        const {name, address, city, States, zip} = this.state.reduxState
         const {img, mortgage, rent} = this.state
         const body = {
             name,
@@ -49,17 +38,10 @@ export default class extends Component {
             rent
         }
         axios.post('/api/house', body).then(res => {
-            this.setState({
-                name: '',
-                address: '',
-                city: '',
-                States: '',
-                zip: 0,
-                img: '',
-                mortgage: 0,
-                rent: 0
-            })
+            console.log(store.getState())
+           store.dispatch({type: ADD_HOUSE, payload: res})
         })
+        console.log(store.getState())
     }
 
     handleMortgageChange = (mortgageVal) => {
@@ -80,7 +62,10 @@ export default class extends Component {
 
                 <input type='text' value={this.state.rent} onChange={e => this.handleRentChange(e.target.value)} />
 
-                <button onClick={this.addHouse} >Complete</button>
+                <Link to='/' className="links">
+                    <button onClick={this.addHouse} >Complete</button>
+                </Link>
+                
 
                 <Link to='/wizard/step2' className="links">
                     <button>Previous</button>
